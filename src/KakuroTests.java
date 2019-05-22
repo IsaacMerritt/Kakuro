@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-/** Tests fot the Kakuro solver. */
+/** Tests fot the Kakuro solver.
+ * @author Isaac Merritt */
 public class KakuroTests {
 
     private PlayableSquare _s;

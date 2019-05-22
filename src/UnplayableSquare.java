@@ -1,4 +1,5 @@
-/** Unplayable square on a Kakuro board. */
+/** Unplayable square on a Kakuro board.
+ * @author Isaac Merritt */
 class UnplayableSquare extends Square {
 
     /** Unplayable squares are not playable. */

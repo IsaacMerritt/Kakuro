@@ -1,4 +1,5 @@
-/** A square on a Kakuro board. */
+/** A square on a Kakuro board.
+ * @author Isaac Merritt */
 abstract class Square {
 
     /** Says whether this square is playable. */

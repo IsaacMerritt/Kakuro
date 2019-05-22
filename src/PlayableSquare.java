@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-/** A playable square on a Kakuro board. */
+/** A playable square on a Kakuro board.
+ * @author Isaac Merritt */
 class PlayableSquare extends Square {
 
     /** Constructor. */

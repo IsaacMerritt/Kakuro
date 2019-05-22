@@ -1,9 +1,11 @@
 import java.util.List;
 import java.util.ArrayList;
 
+/** Grid of all numbers that can go in a space with 'n' as a sum and 'length' as a length
+ * @author Isaac Merritt */
 class PossibleNumberLists {
 
-    /** Grid of all numbers that can go in a space with 'n' as a sum and 'length' as a length */
+    /** Constructor. */
     PossibleNumberLists() {
         _L = new ArrayList[46][10];
         for (int i = 0; i < 46; i++) {

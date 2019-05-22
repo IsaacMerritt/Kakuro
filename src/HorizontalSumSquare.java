@@ -1,4 +1,5 @@
-/** Horizontal Sum Square. */
+/** Horizontal Sum Square.
+ * @author Isaac Merritt */
 class HorizontalSumSquare extends SumSquare {
 
     /** Constructor. */

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-/** A Kakuro board. */
+/** A Kakuro board.
+ * @author Isaac Merritt */
 public class Board {
 
     /** Constructor. */

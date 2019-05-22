@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-/** Unplayable Square with a sum in it */
+/** Unplayable Square with a sum in it
+ * @author Isaac Merritt */
 abstract class SumSquare extends UnplayableSquare {
 
     SumSquare(int n) {

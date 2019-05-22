@@ -1,4 +1,5 @@
-/** Vertical Sum Square. */
+/** Vertical Sum Square.
+ * @author Isaac Merritt */
 class VerticalSumSquare extends SumSquare{
 
     /** Constructor. */
