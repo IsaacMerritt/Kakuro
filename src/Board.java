@@ -140,14 +140,19 @@ public class Board {
         System.out.println(boardString);
     }
 
-    /** Solve the board in its current state. */
+    /** Solve the board in its current state.
+     * First strategy: comb the board for forces.
+     * Second strategy: force-solve every Sum Square. */
     void solve() {
         ArrayList<SumSquare> solvedSS = new ArrayList<>();
+        //double count = 0;
         while (_sumSquares.size() != solvedSS.size()) {
             for (SumSquare s : _sumSquares) {
                 if (!solvedSS.contains(s)) {
                     if (s.solved()) {
                         solvedSS.add(s);
+                        //count += 1;
+                        //System.out.println(count/ _sumSquares.size());
                     } else {
                         s.comb();
                     }
