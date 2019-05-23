@@ -83,6 +83,16 @@ abstract class SumSquare extends UnplayableSquare {
         }
     }
 
+    /** True if i is in any of my childrens' possible numbers, false otherwise. */
+    boolean possibleForChildren(int i) {
+        for (PlayableSquare p : childrenSquares()) {
+            if (p.possibleNumbers()[i] == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /** Add a PlayableSquare to my children. */
     void addChild(PlayableSquare child) {
         _childrenSquares.add(child);

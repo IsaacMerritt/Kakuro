@@ -30,15 +30,6 @@ class PlayableSquare extends Square {
         return 0;
     }
 
-    /** Returns an array of every one digit number not in the given a. */
-    /*private int[] toggleList(int[] a) {
-        int[] result = new int[a.length];
-        for (int i = 1; i < a.length; i++) {
-            result[i] = 1 - i;
-        }
-        return result;
-    }*/
-
     /** Says whether the given i is a possible value of this square. */
     boolean possibleValue(int i) {
         return _possibleNumbers[i] == 1;
@@ -65,6 +56,15 @@ class PlayableSquare extends Square {
         h.graduateChild();
         h.setTempN(h.tempN() - i);
         ArrayList<Integer> newPoss = board().pnl().possibleNumbers(h.tempN(), h.childrenSquares().size() - h.solvedChildren());
+        ArrayList<Integer> keepList = new ArrayList<>();
+        if (newPoss != null) {
+            for (int j : newPoss) {
+                if (h.possibleForChildren(j)) {
+                    keepList.add(j);
+                }
+            }
+        }
+        newPoss = keepList;
         for (int j = 1; j < 10; j++) {
             if (newPoss != null) {
                 if (!newPoss.contains(j)) {

@@ -141,16 +141,20 @@ public class Board {
     }
 
     /** Solve the board in its current state.
-     * First strategy: comb the board for forces.
-     * Second strategy: force-solve every Sum Square. */
+     * First strategy: comb the board for forces (Shallow solve).
+     * Second strategy: force-solve every Sum Square (Deep Solve). */
     void solve() {
         ArrayList<SumSquare> solvedSS = new ArrayList<>();
         //double count = 0;
-        while (_sumSquares.size() != solvedSS.size()) {
+        boolean changed;
+        boolean shallowSolve = true;
+        while (_sumSquares.size() != solvedSS.size() && shallowSolve) {
+            changed = false;
             for (SumSquare s : _sumSquares) {
                 if (!solvedSS.contains(s)) {
                     if (s.solved()) {
                         solvedSS.add(s);
+                        changed = true;
                         //count += 1;
                         //System.out.println(count/ _sumSquares.size());
                     } else {
@@ -158,8 +162,19 @@ public class Board {
                     }
                 }
             }
+            if (!changed) {
+                shallowSolve = false;
+            }
         }
+        //deepSolve();
         printBoard();
+    }
+
+    /** Helper method for solve(). Force solves each Sum Square. */
+    void deepSolve() {
+        for (SumSquare s : _sumSquares) {
+
+        }
     }
 
     /** Accessor method for _rows. */
