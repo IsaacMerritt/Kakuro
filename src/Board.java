@@ -20,7 +20,7 @@ public class Board {
     }
 
     /** Hash letters for Sum Square string interpretation */
-    int hash(char c) {
+    private int hashChar(char c) {
         if (c - 'A' + 1 > 26) {
             return c - 'A' - 5;
         } else {
@@ -28,7 +28,8 @@ public class Board {
         }
     }
 
-    /** Set the board up to be solved by grouping squares by sum.
+    /** A constructor for this board.
+     * Set the board up to be solved by grouping squares by sum.
      * A letter ([A-Z][a-z]) indicates a sumSquare, to be hashed to its value.
      * A '-' indicates an unsolved, playable square.
      * A '#' indicates a standard unplayable square. */
@@ -50,7 +51,7 @@ public class Board {
                 p.setHorizontalSumSquare(currH);
                 _rowSquares[row][col] = p;
             } else {
-                int sumVal = hash(c);
+                int sumVal = hashChar(c);
                 currH = new HorizontalSumSquare(sumVal);
                 currH.setLetter(c);
                 _horizontalSumSquares.add(currH);
@@ -84,7 +85,7 @@ public class Board {
                 p.setVerticalSumSquare(currV);
                 _colSquares[col][row] = p;
             } else {
-                int sumVal = hash(c);
+                int sumVal = hashChar(c);
                 currV = new VerticalSumSquare(sumVal);
                 currV.setLetter(c);
                 _verticalSumSquares.add(currV);
