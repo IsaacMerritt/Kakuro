@@ -168,19 +168,19 @@ public class Board {
                 shallowSolve = false;
             }
         }
-        //deepSolve();
+        deepSolve();
         //printBoard(System.out);
     }
 
     /** Helper method for solve(). Force solves each Sum Square. */
     void deepSolve() {
         for (SumSquare s : _sumSquares) {
-
+            whittle(s);
         }
     }
 
     /** Eliminate bad numbers from Sum Square. */
-    void whittle(SumSquare s) {
+    private void whittle(SumSquare s) {
         int[] impNums = s.impossibleNumbers();
         for (int i = 1; i < 10; i++) {
             if (impNums[i] == 0) {
@@ -193,11 +193,22 @@ public class Board {
 
     /** True if i can go in a Sum Square with impossible numbers a
      * and tempN n. */
-    boolean keep(int i, int[] a, int n) {
+    private boolean keep(int i, int[] a, int n) {
         if (i == n) {
             return a[i] == 0;
-        } else if () {
-
+        } else if (a[i] == 1 || i > n) {
+            return false;
+        } else {
+            int[] copy = Arrays.copyOf(a, a.length);
+            copy[i] = 1;
+            for (int j = 1; j < 10; j++) {
+                if (copy[j] == 0) {
+                    if (keep(j, copy, n - i)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 
