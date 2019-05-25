@@ -1,5 +1,5 @@
 /** Helper Class for parsing input files. */
-public class SumSquareDual {
+class SumSquareDual {
 
     /** Constructor. */
     SumSquareDual(String s) {
@@ -30,7 +30,7 @@ public class SumSquareDual {
                 _vertical = 0;
             }
         } catch (Exception e) {
-            System.out.printf("SumSquare Dual error: Invalid string given as input");
+            System.out.println("SumSquare Dual error: Invalid string given as input");
             throw new IllegalArgumentException();
         }
     }

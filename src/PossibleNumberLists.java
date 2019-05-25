@@ -104,7 +104,7 @@ class PossibleNumberLists {
         return _L[n][length];
     }
 
-    /** Grid. */
+    /** Grid of possibilities. */
     private ArrayList<Integer>[][] _L;
 
 }

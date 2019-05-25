@@ -30,28 +30,8 @@ abstract class Square {
     /** Row this square is in. */
     private int _row;
 
-    /** Accessor method for _row */
-    int row() {
-        return _row;
-    }
-
-    /** Set the row of this square to row. */
-    void setRow(int row) {
-        _row = row;
-    }
-
     /** Column this square is in. */
     private int _col;
-
-    /** Accessor method for _col */
-    int col() {
-        return _col;
-    }
-
-    /** Set the column of this square to col. */
-    void setCol(int col) {
-        _col = col;
-    }
 
     /** Board this square is on. */
     Board _board;

@@ -8,6 +8,7 @@ import java.io.PrintStream;
  * @author Isaac Merritt */
 public class Main {
 
+    /** Helper function for Main constructor. */
     public static void main(String... args) {
         try {
             new Main(args).process();
@@ -18,7 +19,8 @@ public class Main {
         System.exit(1);
     }
 
-    /** Check ARGS and open the necessary files (see comment on main). */
+    /** Constructor for Main.
+     * Check ARGS and open the necessary files (see comment on main). */
     private Main(String[] args) {
         if (args.length != 2) {
             System.out.println("Only 2 command-line arguments allowed");
@@ -51,9 +53,9 @@ public class Main {
     /** Configure a Kakuro board from the contents of  _input, sending the
      *  results to _output. */
     private void process() {
-        _board = readInput();
-        _board.solve();
-        _board.printBoard(_output);
+        Board b = readInput();
+        b.solve();
+        b.printBoard(_output);
     }
 
     /** Read the input file, outputting a board that can be solved. */
@@ -173,8 +175,5 @@ public class Main {
 
     /** File for solved board. */
     private PrintStream _output;
-
-    /** Board used by this Main. */
-    private Board _board;
 
 }

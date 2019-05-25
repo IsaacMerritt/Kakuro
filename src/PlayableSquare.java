@@ -113,12 +113,12 @@ class PlayableSquare extends Square {
     }
 
     /** Accessor method for _verticalSumSquare. */
-    VerticalSumSquare verticalSumSquare() {
+    private VerticalSumSquare verticalSumSquare() {
         return _verticalSumSquare;
     }
 
     /** Accessor method for _horizontalSumSquare. */
-    HorizontalSumSquare horizontalSumSquare() {
+    private HorizontalSumSquare horizontalSumSquare() {
         return _horizontalSumSquare;
     }
 

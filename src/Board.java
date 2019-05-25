@@ -7,8 +7,6 @@ public class Board {
 
     /** Constructor. */
     Board(int rows, int cols, String rowRepresentation, String colRepresentation) {
-        //Consider taking one string as input and parsing it into 2 strings (could be challenging).
-        //Look to next char from Sum Squares and reject them as Unplayables if there is not a Playable adjacent.
         _rows = rows;
         _cols = cols;
         _rowSquares = new Square[_rows][_cols];
@@ -174,31 +172,11 @@ public class Board {
     }
 
     /** Helper method for solve(). Force solves each Sum Square. */
-    void deepSolve() {
+    /*void deepSolve() {
         for (SumSquare s : _sumSquares) {
 
         }
-    }
-
-    /** Accessor method for _rows. */
-    int rows() {
-        return _rows;
-    }
-
-    /** Accessor method for _cols. */
-    int cols() {
-        return _cols;
-    }
-
-    /** Accessor method for _rowSquares. */
-    Square[][] rowSquares() {
-        return _rowSquares;
-    }
-
-    /** Accessor method for _colSquares. */
-    Square[][] colSquares() {
-        return _colSquares;
-    }
+    }*/
 
     /** Accessor method for _pnl. */
     PossibleNumberLists pnl() {
