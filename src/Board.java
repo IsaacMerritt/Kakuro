@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.io.PrintStream;
 
@@ -172,11 +173,33 @@ public class Board {
     }
 
     /** Helper method for solve(). Force solves each Sum Square. */
-    /*void deepSolve() {
+    void deepSolve() {
         for (SumSquare s : _sumSquares) {
 
         }
-    }*/
+    }
+
+    /** Eliminate bad numbers from Sum Square. */
+    void whittle(SumSquare s) {
+        int[] impNums = s.impossibleNumbers();
+        for (int i = 1; i < 10; i++) {
+            if (impNums[i] == 0) {
+                if (!keep(i, impNums, s.tempN())) {
+                    s.crossOff(i);
+                }
+            }
+        }
+    }
+
+    /** True if i can go in a Sum Square with impossible numbers a
+     * and tempN n. */
+    boolean keep(int i, int[] a, int n) {
+        if (i == n) {
+            return a[i] == 0;
+        } else if () {
+
+        }
+    }
 
     /** Accessor method for _pnl. */
     PossibleNumberLists pnl() {

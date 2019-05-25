@@ -108,6 +108,11 @@ abstract class SumSquare extends UnplayableSquare {
         return _impossibleNumbers;
     }
 
+    /** Modifier for _impossibleNumbers. */
+    void setImpossibleNumbers(int[] a) {
+        _impossibleNumbers = a;
+    }
+
     /** Accessor for _solvedChildren. */
     int solvedChildren() {
         return _solvedChildren;
