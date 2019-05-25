@@ -146,19 +146,16 @@ public class Board {
      * First strategy: comb the board for forces (Shallow solve).
      * Second strategy: force-solve every Sum Square (Deep Solve). */
     void solve() {
-        ArrayList<SumSquare> solvedSS = new ArrayList<>();
-        //double count = 0;
+        _solvedSS = new ArrayList<>();
         boolean changed;
         boolean shallowSolve = true;
-        while (_sumSquares.size() != solvedSS.size() && shallowSolve) {
+        while (_sumSquares.size() != _solvedSS.size() && shallowSolve) {
             changed = false;
             for (SumSquare s : _sumSquares) {
-                if (!solvedSS.contains(s)) {
+                if (!_solvedSS.contains(s)) {
                     if (s.solved()) {
-                        solvedSS.add(s);
+                        _solvedSS.add(s);
                         changed = true;
-                        //count += 1;
-                        //System.out.println(count/ _sumSquares.size());
                     } else {
                         s.comb();
                     }
@@ -168,14 +165,23 @@ public class Board {
                 shallowSolve = false;
             }
         }
-        deepSolve();
-        //printBoard(System.out);
+        while (_solvedSS.size() != _sumSquares.size()) {
+            deepSolve();
+            printBoard(System.out);
+        }
+        printBoard(System.out);
     }
 
     /** Helper method for solve(). Force solves each Sum Square. */
-    void deepSolve() {
+    private void deepSolve() {
         for (SumSquare s : _sumSquares) {
-            whittle(s);
+            if (!s.solved()) {
+                whittle(s);
+                s.comb();
+                if (s.solved() && !_solvedSS.contains(s)) {
+                    _solvedSS.add(s);
+                }
+            }
         }
     }
 
@@ -240,5 +246,8 @@ public class Board {
 
     /** Possible number finder. */
     private PossibleNumberLists _pnl;
+
+    /** List of all solved Sum Squares. */
+    private ArrayList<SumSquare> _solvedSS;
 
 }
