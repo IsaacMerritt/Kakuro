@@ -52,7 +52,8 @@ public class Main {
      *  results to _output. */
     private void process() {
         _board = readInput();
-        //more shit
+        _board.solve();
+        _board.printBoard(_output);
     }
 
     /** Read the input file, outputting a board that can be solved. */

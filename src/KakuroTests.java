@@ -85,7 +85,7 @@ public class KakuroTests {
     public void basicBoardTest() {
         // #3-
         Board b = new Board(1, 3, "#C-", "#C-");
-        b.printBoard();
+        b.printBoard(System.out);
         System.out.println(" ");
     }
 
@@ -96,7 +96,7 @@ public class KakuroTests {
         // D-- --> D13
         // F-- --> F24
         Board b = new Board(3, 3, "###D--F--", "###C--G--");
-        b.printBoard();
+        b.printBoard(System.out);
         System.out.println(" ");
         b.solve();
         System.out.println(" ");
@@ -112,7 +112,7 @@ public class KakuroTests {
         // J--#I--# --> J37#I18#
         // C--#P--# --> C12#P79#
         Board b = new Board(7, 8 , "########Q--#C--#J--#I--#################J--#I--#C--#P--#", "#######P--#D--K--#I--##############H--#H--D--#Q--#######");
-        b.printBoard();
+        b.printBoard(System.out);
         System.out.println(" ");
         b.solve();
         System.out.println(" ");
@@ -131,7 +131,7 @@ public class KakuroTests {
         // P-----W---Q--     #-----#---#--
         // M---##O---I--     #---###---#--
         Board b = new Board(10, 13, "#############K--U---##W---C--K---R-----#P--D--c----#W-----X---###d----P--K----###P---h-----#c----P--N--#P-----W---Q--M---##O---I--", "##########D--G--#O--c-----M---##W---J---E--h-----#P----I---#S---P--######Q--X---#T---c----#e-----H--M---P---##P---U-----Q--#N--P--");
-        b.printBoard();
+        b.printBoard(System.out);
         System.out.println(" ");
         b.solve();
         System.out.println(" ");
@@ -203,7 +203,7 @@ public class KakuroTests {
                 }
             }
         }
-        b.printBoard();
+        b.printBoard(System.out);
         b.solve();
     }
     */

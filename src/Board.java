@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.PrintStream;
 
 /** A Kakuro board.
  * @author Isaac Merritt */
@@ -123,22 +124,23 @@ public class Board {
                     if (grabRow.letter() == 0 && grabCol.letter() == 0) {
                         result += '~';
                     } else if (grabRow.isSumSquare()) {
-                        result += grabRow.letter();
+                        result += '.';
                     } else {
-                        result += grabCol.letter();
+                        result += '.';
                     }
                 } else {
                     result += '#';
                 }
+                result += ' ';
             }
         }
         return result;
     }
 
     /** Print out the board. */
-    void printBoard() {
+    void printBoard(PrintStream p) {
         String boardString = toString();
-        System.out.println(boardString);
+        p.println(boardString);
     }
 
     /** Solve the board in its current state.
@@ -168,7 +170,7 @@ public class Board {
             }
         }
         //deepSolve();
-        printBoard();
+        //printBoard(System.out);
     }
 
     /** Helper method for solve(). Force solves each Sum Square. */
