@@ -128,6 +128,11 @@ abstract class SumSquare extends UnplayableSquare {
         return _tempN;
     }
 
+    @Override
+    boolean solved() {
+        return childrenSquares().size() - solvedChildren() == 0;
+    }
+
     /** List of all sqaures this square dictates. */
     private ArrayList<PlayableSquare> _childrenSquares;
 

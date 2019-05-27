@@ -39,6 +39,9 @@ public class Board {
         HorizontalSumSquare currH = null;
         int row = 0, col = 0;
         for (int i = 0; i < rows.length(); i++) {
+            if (i == 85) {
+                boolean here = true;
+            }
             char c = rows.charAt(i);
             if (c == '#') {
                 currH = null;
@@ -47,6 +50,10 @@ public class Board {
             } else if (c == '-') {
                 PlayableSquare p = new PlayableSquare();
                 p.setBoard(this);
+                if (currH == null) {
+                    System.out.println("Error: Sum Square values inconsistent with board");
+                    throw new IllegalArgumentException();
+                }
                 currH.addChild(p);
                 p.setHorizontalSumSquare(currH);
                 _rowSquares[row][col] = p;
@@ -167,7 +174,6 @@ public class Board {
         }
         while (_solvedSS.size() != _sumSquares.size()) {
             deepSolve();
-            printBoard(System.out);
         }
         printBoard(System.out);
     }
@@ -181,16 +187,26 @@ public class Board {
                 if (s.solved() && !_solvedSS.contains(s)) {
                     _solvedSS.add(s);
                 }
+            } else {
+                if (!_solvedSS.contains(s)) {
+                    _solvedSS.add(s);
+                }
             }
         }
     }
 
     /** Eliminate bad numbers from Sum Square. */
     private void whittle(SumSquare s) {
+        for (int w = 1; w < 10; w++) {
+            if (!s.possibleForChildren(w)) {
+                s.crossOff(w);
+            }
+        }
         int[] impNums = s.impossibleNumbers();
         for (int i = 1; i < 10; i++) {
             if (impNums[i] == 0) {
-                if (!keep(i, impNums, s.tempN())) {
+                int unsolved = s.childrenSquares().size() - s.solvedChildren();
+                if (!keep(i, impNums, s.tempN(), unsolved)) {
                     s.crossOff(i);
                 }
             }
@@ -199,9 +215,9 @@ public class Board {
 
     /** True if i can go in a Sum Square with impossible numbers a
      * and tempN n. */
-    private boolean keep(int i, int[] a, int n) {
+    private boolean keep(int i, int[] a, int n, int numLeft) {
         if (i == n) {
-            return a[i] == 0;
+            return a[i] == 0 && numLeft == 1;
         } else if (a[i] == 1 || i > n) {
             return false;
         } else {
@@ -209,7 +225,7 @@ public class Board {
             copy[i] = 1;
             for (int j = 1; j < 10; j++) {
                 if (copy[j] == 0) {
-                    if (keep(j, copy, n - i)) {
+                    if (keep(j, copy, n - i, numLeft - 1)) {
                         return true;
                     }
                 }

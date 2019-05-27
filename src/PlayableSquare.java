@@ -86,7 +86,7 @@ class PlayableSquare extends Square {
     }
 
     /** When an N is chosen for this square, its possible numbers are N
-     * and its imposible numbers are all but N. Its neighbors are affected
+     * and its impossible numbers are all but N. Its neighbors are affected
      * as well. */
     void wipe() {
         _verticalSumSquare.crossOff(_n);
