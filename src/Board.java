@@ -122,28 +122,20 @@ public class Board {
                 Square grabCol = _colSquares[j][i];
                 if (grabRow.isPlayable() && grabCol.isPlayable()) {
                     if (grabRow.n() == grabCol.n()) {
-                        result += Integer.toString(grabRow.n());
+                        result += Integer.toString(grabRow.n()); //solved Playable Square
                     } else {
-                        result += '~';
-                    }
-                } else if (grabRow.isSumSquare() || grabCol.isSumSquare()) {
-                    if (grabRow.letter() == 0 && grabCol.letter() == 0) {
-                        result += '~';
-                    } else if (grabRow.isSumSquare()) {
-                        result += '.';
-                    } else {
-                        result += '.';
+                        result += '~'; // unsolved Playable Square
                     }
                 } else {
-                    result += '#';
+                    result += ' '; // Unplayable Square or Sum Square not necessary for solution
                 }
-                result += ' ';
+                result += ' '; // Put a space between each character
             }
         }
         return result;
     }
 
-    /** Print out the board. */
+    /** Print out the board to printstream p. */
     void printBoard(PrintStream p) {
         String boardString = toString();
         p.println(boardString);
